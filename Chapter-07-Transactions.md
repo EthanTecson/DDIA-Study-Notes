@@ -60,3 +60,14 @@ However, serializable isolation has performance cost and thus databases use “w
 *nonrepeatable*
 <br>
 *read skew*
+
+### 3. Preventing Lost Updates 
+*Lost Update*
+<br>
+*read-modify-write cycle*
+
+<u>Solutions</u>
+- Atomic Write Operations
+<br>
+  - *cursor stability*
+- Explicit locking
