@@ -52,4 +52,11 @@ For context, concurrency is the ability to handle multiple tasks at once but not
 <br></br>
 To offload some of this complexity, databases make it a goal to provide **transaction isolation** which allows the developer to PRETEND that no concurrency is happening. Transaction isolation does this by providing **serializable isolation**, which is the database guaranteeing the same effect as if they were to be run serially: one at a time, without any concurrency (233). But in some situations, concurrency is occurring and it is more an abstraction.
 
-However, serializability has performance cost and thus databases use “weaker levels of isolation”. 
+However, serializable isolation has performance cost and thus databases use “weaker levels of isolation”. 
+
+### 1. Read Committed
+
+### 2. Snapshot Isolation and Repeatable Read 
+*nonrepeatable*
+<br>
+*read skew*
