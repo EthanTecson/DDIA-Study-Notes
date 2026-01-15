@@ -50,10 +50,11 @@ Overall, multi-object vs. singular-object mainly has to do with the idea of scop
 
 For context, concurrency is the ability to handle multiple tasks at once but not execute on the task at the same time (parallelism). As mentioned earlier, race conditions are one of the problems faced when performing concurrency. In the context of software development, debugging concurrency issues can become difficult because it is hard to tell which parts of the application code are accessing the database (233). 
 <br></br>
-To offload some of this complexity, databases make it a goal to provide **transaction isolation** which allows the developer to PRETEND that no concurrency is happening. Transaction isolation does this by providing **serializable isolation**, which is the database guaranteeing the same effect as if they were to be run serially: one at a time, without any concurrency (233). But in some situations, concurrency is occurring and it is more an abstraction.
+To offload some of this complexity, databases make it a goal to provide **transaction isolation** which allows the developer to PRETEND that no concurrency is happening. Transaction isolation does this by providing **serializable isolation**, which is the database guaranteeing the same result as if they were to be run serially: one at a time, without any concurrency (233). But in some situations, concurrency is occurring and it is more an abstraction.
 
-However, serializable isolation has performance cost and thus databases use “weaker levels of isolation”. 
+However, serializable isolation has performance cost and thus databases use “weaker levels of isolation”. Below are to name a few. 
 
+### <u>Levels</u>:
 ### 1. Read Committed
 
 ### 2. Snapshot Isolation and Repeatable Read 
@@ -61,7 +62,9 @@ However, serializable isolation has performance cost and thus databases use “w
 <br>
 *read skew*
 
-### 3. Preventing Lost Updates 
+### <u>Bugs when isolation isn't strong enough</u>:
+
+#### 3. Preventing Lost Updates 
 *Lost Update*
 <br>
 *read-modify-write cycle*
@@ -71,3 +74,11 @@ However, serializable isolation has performance cost and thus databases use “w
 <br>
   - *cursor stability*
 - Explicit locking
+  - *FOR UPDATE*
+- Automatically detecting lost updates
+- Compare-and-set
+<br></br>
+
+Conflict resolution and replication (short recap rather than a strategy)
+
+#### 4. Write Skew and Phantoms
