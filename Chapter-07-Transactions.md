@@ -57,15 +57,19 @@ However, serializable isolation has performance cost and thus databases use “w
 ### <u>Levels</u>:
 ### 1. Read Committed
 
+in related to *dirty writes* (a type of race condition)
+
 ### 2. Snapshot Isolation and Repeatable Read 
 *nonrepeatable*
 <br>
 *read skew*
 
 ### <u>Bugs when isolation isn't strong enough</u>:
+(Self Notes:
+- Dirty writes and lost updates are race conditions that have to do with updating the same object)
 
-#### 3. Preventing Lost Updates 
-*Lost Update*
+#### 1. Preventing Lost Updates 
+*Lost Update* - what is it? (A type of race condition)
 <br>
 *read-modify-write cycle*
 
@@ -74,11 +78,35 @@ However, serializable isolation has performance cost and thus databases use “w
 <br>
   - *cursor stability*
 - Explicit locking
-  - *FOR UPDATE*
+  - *FOR UPDATE* - function in database language
 - Automatically detecting lost updates
 - Compare-and-set
 <br></br>
 
 Conflict resolution and replication (short recap rather than a strategy)
 
-#### 4. Write Skew and Phantoms
+### <u>Other types of race conditions</u> 
+#### Write Skew and Phantoms
+
+*Write Skew* - two users updating/inserting/updating separate objects that ultimately conflict with some overhead rule. Ex: two doctors requesting off-call when at least one doctor needs to be on call
+
+*Phantoms* - A transaction changes the result of a search query in another transaction
+- can be solved with snapshot isolation in read-only queries but not read-write transaction
+
+## <u>**Solutions**</u>
+
+*Materializing Conflicts* - artificially introduce locks (last resort if no other possibility and a serializable isolation level is preferred)
+
+### **Serializability**
+
+**Use serializable isolation**
+
+Serializable isolation is the guarantee that even with operations being preformed in paralllel or concurrently, the end result is the same if they were to be ran one at a time, aka serially. To implement serializable isolation, there are 3 techniques talked about in this book:
+
+1. Actual Serial Execution
+2. Two-Phase Locking
+3. Serializable Snapshot Isolatoin (SSI)
+
+
+
+
