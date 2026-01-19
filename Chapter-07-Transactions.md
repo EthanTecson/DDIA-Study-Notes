@@ -104,6 +104,8 @@ Conflict resolution and replication (short recap rather than a strategy)
 Serializable isolation is the guarantee that even with operations being preformed in paralllel or concurrently, the end result is the same if they were to be ran one at a time, aka serially. To implement serializable isolation, there are 3 techniques talked about in this book:
 
 1. Actual Serial Execution
+- Interactive Transaction vs. Stored Procedure
+- Partitioning data to allow multiple cores to do work
 2. Two-Phase Locking
 3. Serializable Snapshot Isolatoin (SSI)
 
