@@ -107,7 +107,12 @@ Serializable isolation is the guarantee that even with operations being preforme
 - Interactive Transaction vs. Stored Procedure
 - Partitioning data to allow multiple cores to do work
 2. Two-Phase Locking
-3. Serializable Snapshot Isolatoin (SSI)
+- Writers block readers until a commit or abort happens, and readers block writers until a commit or abort happens.
+- Shared Lock vs. Exclusive Lock
+- Preforamnce a lot worse: transaction throughput and response time of queries
+*predicate locks*
+*index-range locking* (aka *next-key locking*)
+1. Serializable Snapshot Isolatoin (SSI)
 
 
 
