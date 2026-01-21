@@ -113,6 +113,9 @@ Serializable isolation is the guarantee that even with operations being preforme
 *predicate locks*
 *index-range locking* (aka *next-key locking*)
 1. Serializable Snapshot Isolatoin (SSI)
+- Recently created in 2008 and has possibility to becoming fast enough to be the new default (no clue of what is used in 2025)
+- Pessimistic vs Optimistic concurrency
+- How is it actaully implemented
 
 
 
